@@ -10,7 +10,7 @@
     "lang": {
         "en-US": {
             "name": "Bonus Claim",
-          "description": "A Template for a custom Journey Builder activity",
+          "description": "Push Bonus Claim Information for Subscriber to Octavian",
           "step1Label": "Configure Activity"
         }
     },
