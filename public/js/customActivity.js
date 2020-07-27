@@ -9,10 +9,7 @@ define([
     var payload = {};
     var lastStepEnabled = false;
     var steps = [ // initialize to the same value as what's set in config.json for consistency
-        { "label": "Step 1", "key": "step1" },
-        { "label": "Step 2", "key": "step2" },
-        { "label": "Step 3", "key": "step3" },
-        { "label": "Step 4", "key": "step4", "active": false }
+        { "label": "Step 1", "key": "step1" }
     ];
     var currentStep = steps[0].key;
 
@@ -34,21 +31,16 @@ define([
         connection.trigger('requestEndpoints');
 
         // Disable the next button if a value isn't selected
-        $('#select1').change(function() {
-            var message = getMessage();
-            connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+        $('#bonuspoints').change(function() {
+            var points = getPoints();
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(points) });
 
-            $('#message').html(message);
+            //$('#message').html(points);
         });
 
         // Toggle step 4 active/inactive
         // If inactive, wizard hides it and skips over it during navigation
-        $('#toggleLastStep').click(function() {
-            lastStepEnabled = !lastStepEnabled; // toggle status
-            steps[3].active = !steps[3].active; // toggle active
-
-            connection.trigger('updateSteps', steps);
-        });
+       
     }
 
     function initialize (data) {
@@ -80,8 +72,8 @@ define([
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
         } else {
-            $('#select1').find('option[value='+ message +']').attr('selected', 'selected');
-            $('#message').html(message);
+            $('#bonuspoints').find('option[value='+ message +']').attr('selected', 'selected');
+            //$('#message').html(message);
             showStep(null, 3);
         }
     }
@@ -130,7 +122,7 @@ define([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getMessage())
+                    enabled: Boolean(getPoints())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -176,8 +168,8 @@ define([
     }
 
     function save() {
-        var name = $('#select1').find('option:selected').html();
-        var value = getMessage();
+        var name = $('#bonuspoints').find('option:selected').html();
+        var value = getPoints();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -192,8 +184,8 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
-    function getMessage() {
-        return $('#select1').find('option:selected').attr('value').trim();
+    function getPoints() {
+        return $('#bonuspoints').attr('value').trim();
     }
 
 });
