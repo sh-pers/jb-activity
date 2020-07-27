@@ -3,12 +3,13 @@
     "metaData": {
         "icon": "images/icon.png",
         "iconSmall": "images/iconSmall.png",
-        "category": "message"
+        "category": "customer",
+        "configOnDrop": true
     },
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Template",
+            "name": "Bonus Claim",
           "description": "A Template for a custom Journey Builder activity",
           "step1Label": "Configure Activity"
         }
@@ -21,7 +22,7 @@
                 }									
 			],
           "outArguments": [],
-          "url": "https://<your-domain-here>/journeybuilder/execute",
+          "url": "https://shjbactivity.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -31,24 +32,24 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "__application_key_from_appcenter_here__",
+      "applicationExtensionKey": "17f28a7c-7829-43a7-a7b6-4650b09550d8",
       "save": {
-        "url": "https://<your-domain-here>/journeybuilder/save",
+        "url": "https://shjbactivity.herokuapp.com/journeybuilder/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://<your-domain-here>/journeybuilder/publish",
+        "url": "https://shjbactivity.herokuapp.com/journeybuilder/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://<your-domain-here>/journeybuilder/stop",
+        "url": "https://shjbactivity.herokuapp.com/journeybuilder/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://<your-domain-here>/journeybuilder/validate",
+        "url": "https://shjbactivity.herokuapp.com/journeybuilder/validate",
         "verb": "POST",
         "useJwt": true
       }
