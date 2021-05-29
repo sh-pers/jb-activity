@@ -33,9 +33,9 @@ define([
         // Disable the next button if a value isn't selected
         $('#url').change(function() {
             var url = getURL();
-            connection.trigger('updateButton', { button: 'next', enabled: Boolean(points) });
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(url) });
 
-            //$('#message').html(points);
+            //$('#message').html(url);
         });
 
         // Toggle step 4 active/inactive
@@ -104,7 +104,7 @@ define([
     }
 
     function onGotoStep (step) {
-        showStep(step);
+        //showStep(step);
         connection.trigger('ready');
     }
 
