@@ -169,7 +169,8 @@ define([
 
     function save() {
         var name = $('#bonuspoints').find('option:selected').html();
-        var value = getPoints();
+        var url = getURL();
+        var payload = getPayload();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -177,15 +178,19 @@ define([
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "message": value }];
+        payload['arguments'].execute.inArguments = [{ "message": url }];
 
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
     }
 
-    function getPoints() {
-        return $('#bonuspoints').attr('value').trim();
+    function getURL() {
+        return $('#url').attr('url').trim();
+    }
+
+    function getPayload() {
+        return $('#payload').attr('payload').trim();
     }
 
 });
