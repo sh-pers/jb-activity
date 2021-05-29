@@ -31,7 +31,7 @@ define([
         connection.trigger('requestEndpoints');
 
         // Disable the next button if a value isn't selected
-        $('#bonuspoints').change(function() {
+        $('#url').change(function() {
             var points = getPoints();
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(points) });
 
@@ -72,7 +72,7 @@ define([
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
         } else {
-            $('#bonuspoints').find('option[value='+ message +']').attr('selected', 'selected');
+            $('#url').find('option[value='+ message +']').attr('selected', 'selected');
             //$('#message').html(message);
             showStep(null, 3);
         }
@@ -122,7 +122,7 @@ define([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getPoints())
+                    enabled: Boolean(getURL())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -168,7 +168,7 @@ define([
     }
 
     function save() {
-        var name = $('#bonuspoints').find('option:selected').html();
+        var name = $('#url').find('option:selected').html();
         var url = getURL();
         var payload = getPayload();
 
