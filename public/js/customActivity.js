@@ -32,7 +32,7 @@ define([
 
         // Disable the next button if a value isn't selected
         $('#url').change(function() {
-            var points = getPoints();
+            var url = getURL();
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(points) });
 
             //$('#message').html(points);
