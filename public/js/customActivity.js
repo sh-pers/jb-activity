@@ -186,11 +186,11 @@ define([
     }
 
     function getURL() {
-        return $('#url').attr('url').trim();
+        return $('#url').attr('value').trim();
     }
 
     function getPayload() {
-        return $('#payload').attr('payload').trim();
+        return $('#payload').attr('value').trim();
     }
 
 });
