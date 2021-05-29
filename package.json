@@ -1,5 +1,5 @@
 {
-  "name": "jb-activity-template",
+  "name": "Webhook Activity",
   "version": "1.0.0",
   "description": "Journey Builder Activity Template",
   "engines": {

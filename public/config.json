@@ -8,9 +8,9 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "Bonus Claim",
-          "description": "Push Bonus Claim Information for Subscriber to Octavian",
-          "step1Label": "Configure Activity"
+            "name": "Webhook Activity",
+          "description": "Send data to custom webhook",
+          "step1Label": "Configure Webhook"
         }
     },
     "arguments": {
@@ -31,7 +31,7 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "17f28a7c-7829-43a7-a7b6-4650b09550d8",
+      "applicationExtensionKey": "0d9d72f9-123f-45b5-9a06-408596cbd8b9",
       "save": {
         "url": "https://shjbactivity.herokuapp.com/journeybuilder/save",
           "verb": "POST",
