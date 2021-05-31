@@ -53,9 +53,9 @@
         "useJwt": true
       }
     },
-    // "wizardSteps": [
-    //   //{ "label": "Step 1", "key": "step1" }
-    // ],
+    "wizardSteps": [
+      { "label": "Step 1", "key": "step1" }
+    ],
     "userInterfaces": {
         "configModal": {
             "height": 400,
