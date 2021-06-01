@@ -190,7 +190,7 @@ define([
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "url": url }, {"content": content}];
+        payload['arguments'].execute.inArguments = [{ "url": url }, {"content": "123"}];
 
         payload['metaData'].isConfigured = true;
 
