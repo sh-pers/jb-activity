@@ -75,6 +75,7 @@ define([
             // If there is a message, skip to the summary step
         } else {
             $('#url').val(url);
+            $('#payload').val(content);
             //$('#message').html(message);
             showStep(null, 1);
         }
@@ -182,7 +183,7 @@ define([
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "url": url }];
+        payload['arguments'].execute.inArguments = [{ "url": url }, {"content": content}];
 
         payload['metaData'].isConfigured = true;
 
