@@ -170,7 +170,7 @@ define([
     function save() {
         var name = $('#url').find('option:selected').html();
         var url = getURL();
-        var payload = getPayload();
+        var content = getPayload();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
