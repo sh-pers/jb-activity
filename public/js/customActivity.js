@@ -105,7 +105,7 @@ define([
     }
 
     function onGotoStep (step) {
-        //showStep(step);
+        showStep(step);
         connection.trigger('ready');
     }
 
