@@ -170,7 +170,7 @@ define([
     }
 
     function save() {
-        var name = $('#url').find('option:selected').html();
+        var name = 'webhook-settings';
         var url = getURL();
         var content = getPayload();
 
