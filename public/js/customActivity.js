@@ -201,7 +201,7 @@ define([
     }
 
     function getContent() {
-        console.log('getContent: ' $('#payload').val());
+        console.log('getContent: ' + $('#payload').val());
         return $('#payload').val().trim();
     }
 
