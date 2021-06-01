@@ -175,7 +175,7 @@ define([
     function save() {
         var name = 'webhook-settings';
         var url = getURL();
-        var content = getPayload();
+        var content = getContent();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -198,8 +198,8 @@ define([
         return $('#url').val().trim();
     }
 
-    function getPayload() {
-        console.log('getPayload: ' $('#payload').val());
+    function getContent() {
+        console.log('getContent: ' $('#payload').val());
         return $('#payload').val().trim();
     }
 
