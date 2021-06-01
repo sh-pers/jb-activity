@@ -180,13 +180,13 @@ define([
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "message": url }];
+        payload['arguments'].execute.inArguments = [{ "message": "TEST.DE" }];
 
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
         console.log(payload);
-        console.log(Stringify(payload['arguments']));
+        //console.log(Stringify(payload['arguments']));
 
     }
 
