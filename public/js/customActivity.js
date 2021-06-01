@@ -74,7 +74,7 @@ define([
         } else {
             $('#url').find('option[value='+ message +']').attr('selected', 'selected');
             //$('#message').html(message);
-            showStep(null, 3);
+            showStep(null, 1);
         }
     }
 
