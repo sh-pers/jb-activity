@@ -48,7 +48,7 @@ define([
             payload = data;
         }
 
-        var message;
+        var url;
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -60,19 +60,21 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                if (key === 'message') {
-                    message = val;
+                console.log("key: " + key);
+                console.log("val: " + key);
+                if (key === 'url') {
+                    url = val;
                 }
             });
         });
 
         // If there is no message selected, disable the next button
-        if (!message) {
+        if (!url) {
             showStep(null, 1);
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
         } else {
-            $('#url').find('option[value='+ message +']').attr('selected', 'selected');
+            $('#url').val(url);
             //$('#message').html(message);
             showStep(null, 1);
         }
@@ -180,7 +182,7 @@ define([
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "message": "TEST.DE" }];
+        payload['arguments'].execute.inArguments = [{ "url": url }];
 
         payload['metaData'].isConfigured = true;
 
