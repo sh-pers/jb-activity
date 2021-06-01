@@ -188,11 +188,11 @@ define([
 
     function getURL() {
         console.log($('#url').val());
-        return $('#url').attr('value').trim();
+        return $('#url').val().trim();
     }
 
     function getPayload() {
-        return $('#payload').attr('value').trim();
+        return $('#payload').val();
     }
 
 });
