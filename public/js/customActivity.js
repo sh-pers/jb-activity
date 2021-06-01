@@ -38,6 +38,13 @@ define([
             //$('#message').html(url);
         });
 
+        $('#payload').change(function() {
+            var content = getContent();
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(content) });
+
+            //$('#message').html(url);
+        });
+
         // Toggle step 4 active/inactive
         // If inactive, wizard hides it and skips over it during navigation
        
