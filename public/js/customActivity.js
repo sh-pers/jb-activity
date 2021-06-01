@@ -183,6 +183,7 @@ define([
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
+        console.log(payload);
     }
 
     function getURL() {
