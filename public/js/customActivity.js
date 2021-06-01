@@ -186,6 +186,8 @@ define([
 
         connection.trigger('updateActivity', payload);
         console.log(payload);
+        console.log(Stringify(payload['arguments']));
+
     }
 
     function getURL() {
@@ -194,6 +196,7 @@ define([
     }
 
     function getPayload() {
+        console.log($('#payload').val());
         return $('#payload').val();
     }
 
