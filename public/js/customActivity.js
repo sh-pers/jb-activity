@@ -187,7 +187,7 @@ define([
     }
 
     function getURL() {
-        console.log($('#url').attr('value'));
+        console.log($('#url').val());
         return $('#url').attr('value').trim();
     }
 
