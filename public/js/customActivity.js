@@ -56,6 +56,7 @@ define([
         }
 
         var url;
+        var content;
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
