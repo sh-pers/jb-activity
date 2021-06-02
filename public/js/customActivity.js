@@ -195,7 +195,7 @@ define([
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "url": url }, {"contentJSON": "123"}];
+        payload['arguments'].execute.inArguments = [{ "url": url }, {"contentJSON": contentJSON}];
 
         payload['metaData'].isConfigured = true;
 
