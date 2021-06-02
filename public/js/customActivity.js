@@ -181,7 +181,7 @@ define([
     }
 
     function save() {
-        var name = 'webhook-settings';
+        var name = 'Webhook Settings';
         var url = getURL();
         var content = getContent();
 
@@ -214,6 +214,7 @@ define([
     }
 
     function writeLog() {
+        console.log('Log Called: true');
         $.ajax({
           "type": "POST",
           "url": "https://mcwprj3n0rthz83-y9-d9kx0yrw8.auth.marketingcloudapis.com/v2/token",
