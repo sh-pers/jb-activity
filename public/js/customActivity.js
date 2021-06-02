@@ -222,17 +222,16 @@ define([
 
         let request = new XMLHttpRequest();
         console.log(request);
-      request.open("GET", "https://api.ipify.org");
-      request.send();
-      request.onload = () => {
-        console.log(request);
-        if (request.status === 200) {
-          // by default the response comes in the string format, we need to parse the data into JSON
-          console.log(JSON.parse(request.response));
-        } else {
-          console.log(`error ${request.status} ${request.statusText}`);
-        }
-      };
+        request.open("GET", "https://api.ipify.org");
+        request.send();
+            console.log(request);
+            if (request.status === 200) {
+                // by default the response comes in the string format, we need to parse the data into JSON
+                console.log(JSON.parse(request.response));
+            } else {
+                console.log(`error ${request.status} ${request.statusText}`);
+            }
+
 
         $.ajax({
           url: "https://api.ipify.org",
