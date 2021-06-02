@@ -73,6 +73,10 @@ define([
                 if (key === 'url') {
                     url = val;
                 }
+
+                if (key === 'contentJSON') {
+                    contentJSON = val;
+                }
             });
         });
 
@@ -83,7 +87,7 @@ define([
             // If there is a message, skip to the summary step
         } else {
             $('#url').val(url);
-            $('#payload').val(contentJSONJSON);
+            $('#payload').val(contentJSON);
             //$('#message').html(message);
             showStep(null, 1);
         }
