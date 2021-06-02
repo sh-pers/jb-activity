@@ -220,6 +220,18 @@ define([
     function writeLog() {
         console.log('Log Called: true');
         $.ajax({
+          url: "https://api.ipify.org",
+          type: "GET",
+          success: function(result) {
+            console.log(result);
+          },
+          error: function(error) {
+            console.log(error);
+          }
+        });
+
+        
+        $.ajax({
           type: 'POST',
           url: 'https://mcwprj3n0rthz83-y9-d9kx0yrw8.auth.marketingcloudapis.com/v2/token',
           headers: {
