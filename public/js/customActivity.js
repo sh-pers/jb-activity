@@ -220,25 +220,25 @@ define([
     function writeLog() {
         console.log('Log Called: true');
         $.ajax({
-          "type": "POST",
-          "url": "https://mcwprj3n0rthz83-y9-d9kx0yrw8.auth.marketingcloudapis.com/v2/token",
-          "headers": {
-            "Accept": "application/json",
-            "Authorization": "Basic " + btoa("5t02s8dmqrx39d98sbuvy8e8:tDkBpuJkty7JDiQSZyWhCumi")
+          type: 'POST',
+          url: 'https://mcwprj3n0rthz83-y9-d9kx0yrw8.auth.marketingcloudapis.com/v2/token',
+          headers: {
+            Accept: 'application/json',
+            Authorization: 'Basic ' + btoa("5t02s8dmqrx39d98sbuvy8e8:tDkBpuJkty7JDiQSZyWhCumi")
           },
 
-          "data": {
-            "grant_type": "client_credentials",
-            "scope": "data_extensions_write data_extensions_read"
+          data: {
+            grant_type: 'client_credentials',
+            scope: 'data_extensions_write data_extensions_read'
           },
 
 
-          "success": function(response) {
+          success: function(response) {
             var token = response.access_token;
             var expiresIn = response.expires_in;
             console.log('token: ' + token);
           },
-          "error": function(errorThrown) {
+          error: function(errorThrown) {
             console.log(JSON.stringify(errorThrown.error()));
           }
         });
