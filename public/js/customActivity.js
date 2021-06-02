@@ -39,8 +39,8 @@ define([
         });
 
         $('#payload').change(function() {
-            var content = getContent();
-            connection.trigger('updateButton', { button: 'next', enabled: Boolean(content) });
+            var contentJSON = getcontentJSON();
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(contentJSON) });
 
             //$('#message').html(url);
         });
@@ -56,7 +56,7 @@ define([
         }
 
         var url;
-        var content;
+        var contentJSON;
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -83,7 +83,7 @@ define([
             // If there is a message, skip to the summary step
         } else {
             $('#url').val(url);
-            $('#payload').val(content);
+            $('#payload').val(contentJSONJSON);
             //$('#message').html(message);
             showStep(null, 1);
         }
@@ -183,15 +183,15 @@ define([
     function save() {
         var name = 'Webhook Settings';
         var url = getURL();
-        var content = getContent();
-
+        var contentJSON = getcontentJSON();
+        var log = writeLog();
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "url": url }, {"content": "123"}];
+        payload['arguments'].execute.inArguments = [{ "url": url }, {"contentJSON": "123"}];
 
         payload['metaData'].isConfigured = true;
 
@@ -208,8 +208,8 @@ define([
         return $('#url').val().trim();
     }
 
-    function getContent() {
-        console.log('getContent: ' + $('#payload').val());
+    function getcontentJSON() {
+        console.log('getcontentJSON: ' + $('#payload').val());
         return $('#payload').val().trim();
     }
 
