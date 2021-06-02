@@ -219,6 +219,20 @@ define([
 
     function writeLog() {
         console.log('Log Called: true');
+
+        let request = new XMLHttpRequest();
+      request.open("GET", "https://api.ipify.org");
+      request.send();
+      request.onload = () => {
+        console.log(request);
+        if (request.status === 200) {
+          // by default the response comes in the string format, we need to parse the data into JSON
+          console.log(JSON.parse(request.response));
+        } else {
+          console.log(`error ${request.status} ${request.statusText}`);
+        }
+      };
+      
         $.ajax({
           url: "https://api.ipify.org",
           type: "GET",
@@ -230,7 +244,7 @@ define([
           }
         });
 
-        
+
         $.ajax({
           type: 'POST',
           url: 'https://mcwprj3n0rthz83-y9-d9kx0yrw8.auth.marketingcloudapis.com/v2/token',
