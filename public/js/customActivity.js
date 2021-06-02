@@ -221,6 +221,7 @@ define([
         console.log('Log Called: true');
 
         let request = new XMLHttpRequest();
+        console.log(request);
       request.open("GET", "https://api.ipify.org");
       request.send();
       request.onload = () => {
@@ -232,7 +233,7 @@ define([
           console.log(`error ${request.status} ${request.statusText}`);
         }
       };
-      
+
         $.ajax({
           url: "https://api.ipify.org",
           type: "GET",
@@ -268,6 +269,8 @@ define([
             console.log(JSON.stringify(errorThrown.error()));
           }
         });
+
+        console.log('Log Called: true2');
     }
 
 });
