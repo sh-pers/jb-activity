@@ -26,16 +26,16 @@
             "body": "",
             "header": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 10000
         }
     },
     "configurationArguments": {
       "applicationExtensionKey": "0d9d72f9-123f-45b5-9a06-408596cbd8b9",
       "save": {
-        "url": "https://shjbactivity.herokuapp.com/save",
+        "url": "https://shjbactivity.herokuapp.com/save.js",
           "verb": "POST",
-        "useJwt": true
+        "useJwt": false
        },
        "publish": {
         "url": "https://shjbactivity.herokuapp.com/publish",
