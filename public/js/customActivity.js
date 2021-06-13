@@ -188,7 +188,7 @@ define([
         var name = 'Webhook Settings';
         var url = getURL();
         var contentJSON = getcontentJSON();
-        var log = writeLog();
+        //var log = writeLog();
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
