@@ -12,6 +12,8 @@ var activity    = require('./routes/activity');
 
 var app = express();
 
+console.log( 'TEST app.js' );
+
 // Configure Express
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({type: 'application/jwt'}));

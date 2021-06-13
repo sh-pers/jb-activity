@@ -31,11 +31,18 @@ define([
         connection.trigger('requestEndpoints');
 
         // Disable the next button if a value isn't selected
-        $('#bonuspoints').change(function() {
-            var points = getPoints();
-            connection.trigger('updateButton', { button: 'next', enabled: Boolean(points) });
+        $('#url').change(function() {
+            var url = getURL();
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(url) });
 
-            //$('#message').html(points);
+            //$('#message').html(url);
+        });
+
+        $('#payload').change(function() {
+            var contentJSON = getcontentJSON();
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(contentJSON) });
+
+            //$('#message').html(url);
         });
 
         // Toggle step 4 active/inactive
@@ -48,7 +55,8 @@ define([
             payload = data;
         }
 
-        var message;
+        var url;
+        var contentJSON;
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -60,21 +68,28 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                if (key === 'message') {
-                    message = val;
+                console.log("inArg key: " + key);
+                console.log("inArg val: " + val);
+                if (key === 'url') {
+                    url = val;
+                }
+
+                if (key === 'contentJSON') {
+                    contentJSON = val;
                 }
             });
         });
 
         // If there is no message selected, disable the next button
-        if (!message) {
+        if (!url) {
             showStep(null, 1);
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
         } else {
-            $('#bonuspoints').find('option[value='+ message +']').attr('selected', 'selected');
+            $('#url').val(url);
+            $('#payload').val(contentJSON);
             //$('#message').html(message);
-            showStep(null, 3);
+            showStep(null, 1);
         }
     }
 
@@ -90,8 +105,10 @@ define([
 
     function onClickedNext () {
         if (
-            (currentStep.key === 'step3' && steps[3].active === false) ||
-            currentStep.key === 'step4'
+            /*(currentStep.key === 'step3' && steps[3].active === false) ||
+            currentStep.key === 'step4'*/
+            currentStep.key === 'step1'
+
         ) {
             save();
         } else {
@@ -122,7 +139,7 @@ define([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getPoints())
+                    enabled: Boolean(getURL())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -168,24 +185,90 @@ define([
     }
 
     function save() {
-        var name = $('#bonuspoints').find('option:selected').html();
-        var value = getPoints();
-
+        var name = 'Webhook Settings';
+        var url = getURL();
+        var contentJSON = getcontentJSON();
+        //var log = writeLog();
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "message": value }];
+        payload['arguments'].execute.inArguments = [{ "url": url }, {"contentJSON": contentJSON}];
 
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
+        //console.log("Payload: " + payload);
+        console.log(JSON.stringify(payload));
+        console.dir(payload);
+
     }
 
-    function getPoints() {
-        return $('#bonuspoints').attr('value').trim();
+    function getURL() {
+        console.log('getURL: ' + $('#url').val());
+        return $('#url').val().trim();
+    }
+
+    function getcontentJSON() {
+        console.log('getcontentJSON: ' + $('#payload').val());
+        return $('#payload').val().trim();
+    }
+
+    function writeLog() {
+        
+        let request = new XMLHttpRequest();
+        console.log(request);
+        request.open("GET", "https://api.ipify.org");
+        request.send();
+        request.onload = function () {
+            console.log(request);
+            if (request.status === 200) {
+                // by default the response comes in the string format, we need to parse the data into JSON
+                console.log(JSON.parse(request.response));
+            } else {
+                console.log(`error ${request.status} ${request.statusText}`);
+            }
+        };
+
+        $.ajax({
+          url: "https://api.ipify.org",
+          type: "GET",
+          success: function(result) {
+            console.log(result);
+          },
+          error: function(error) {
+            console.log(error);
+          }
+        });
+
+
+        $.ajax({
+          type: 'POST',
+          url: 'https://mcwprj3n0rthz83-y9-d9kx0yrw8.auth.marketingcloudapis.com/v2/token',
+          headers: {
+            Accept: 'application/json',
+            Authorization: 'Basic ' + btoa("5t02s8dmqrx39d98sbuvy8e8:tDkBpuJkty7JDiQSZyWhCumi")
+          },
+
+          data: {
+            grant_type: 'client_credentials',
+            scope: 'data_extensions_write data_extensions_read'
+          },
+
+
+          success: function(response) {
+            var token = response.access_token;
+            var expiresIn = response.expires_in;
+            console.log('token: ' + token);
+          },
+          error: function(errorThrown) {
+            console.log(JSON.stringify(errorThrown.error()));
+          }
+        });
+
+        console.log('Log Called: true2');
     }
 
 });
