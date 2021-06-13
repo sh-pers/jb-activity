@@ -68,8 +68,8 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                console.log("key: " + key);
-                console.log("val: " + key);
+                console.log("inArg key: " + key);
+                console.log("inArg val: " + val);
                 if (key === 'url') {
                     url = val;
                 }
@@ -200,10 +200,8 @@ define([
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
-        console.log("Payload: " + payload);
-        //console.log(Stringify(payload['arguments']));
-
-        var log = writeLog();
+        //console.log("Payload: " + payload);
+        console.log(Stringify(payload['arguments']));
 
     }
 
@@ -218,8 +216,7 @@ define([
     }
 
     function writeLog() {
-        console.log('Log Called: true');
-
+        
         let request = new XMLHttpRequest();
         console.log(request);
         request.open("GET", "https://api.ipify.org");
