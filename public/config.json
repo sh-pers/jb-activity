@@ -62,13 +62,5 @@
             "width": 1000,
           "fullscreen": false
         }
-    },
-    "schema": {
-        "arguments": {
-            "execute": {
-                "inArguments": [],
-                "outArguments": []
-            }
-        }
     }
 }
