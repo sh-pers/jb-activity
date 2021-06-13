@@ -202,6 +202,7 @@ define([
         connection.trigger('updateActivity', payload);
         //console.log("Payload: " + payload);
         console.log(JSON.stringify(payload));
+        console.dir(payload);
 
     }
 
