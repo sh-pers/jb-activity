@@ -201,7 +201,7 @@ define([
 
         connection.trigger('updateActivity', payload);
         //console.log("Payload: " + payload);
-        console.log(Stringify(payload['arguments']));
+        console.log(JSON.stringify(payload));
 
     }
 
